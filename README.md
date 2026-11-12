@@ -1,66 +1,212 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# NusaTrip — Bus Ticket Reservation System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**NusaTrip** adalah aplikasi web pemesanan tiket bus antarkota yang dikembangkan menggunakan Laravel 10 dan MySQL. Aplikasi ini dirancang untuk memudahkan pengguna dalam mencari jadwal perjalanan, melihat informasi bus, memilih kursi, melakukan pemesanan, dan mendapatkan e-ticket secara digital.
 
-## About Laravel
+Proyek ini dikembangkan sebagai implementasi pembelajaran pengembangan aplikasi web menggunakan framework Laravel, dengan menerapkan pengelolaan database, navigasi, validasi input, dan interaksi pengguna.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 1. Fitur Aplikasi
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+NusaTrip memiliki beberapa fitur utama:
 
-## Learning Laravel
+- **Ticket Catalog** — Menampilkan daftar bus dan jadwal perjalanan yang tersedia.
+- **Ticket Search** — Mencari perjalanan berdasarkan kota asal, kota tujuan, dan tanggal keberangkatan.
+- **Ticket Details** — Menampilkan informasi bus, fasilitas, waktu keberangkatan, waktu kedatangan, dan harga tiket.
+- **Interactive Seat Selection** — Memungkinkan pengguna memilih kursi yang masih tersedia.
+- **Passenger Information Form** — Mengumpulkan informasi penumpang sebelum pemesanan.
+- **Booking Validation** — Memvalidasi data penumpang dan memastikan kursi sesuai dengan bus yang dipilih.
+- **Duplicate Booking Prevention** — Mencegah pemesanan kursi yang sama pada jadwal perjalanan yang sama.
+- **E-Ticket** — Menampilkan kode booking dan ringkasan pemesanan setelah transaksi berhasil.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 2. Halaman Aplikasi
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Aplikasi terdiri dari empat halaman utama yang saling terintegrasi.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+| Halaman | Deskripsi |
+|---|---|
+| Home / Ticket Catalog | Menampilkan katalog bus dan fitur pencarian perjalanan. |
+| Ticket Details | Menampilkan detail bus dan informasi perjalanan. |
+| Seat Selection & Booking | Menampilkan pemilihan kursi dan formulir data penumpang. |
+| Booking Summary / E-Ticket | Menampilkan konfirmasi pemesanan dan tiket digital. |
 
-## Laravel Sponsors
+## 3. Teknologi yang Digunakan
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+| Teknologi | Kegunaan |
+|---|---|
+| PHP 8.1+ | Bahasa pemrograman backend |
+| Laravel 10 | Framework aplikasi web |
+| MySQL | Sistem manajemen database |
+| Bootstrap 5.3 | Framework antarmuka pengguna |
+| Bootstrap Icons | Ikon antarmuka |
+| JavaScript | Interaksi pada halaman web |
+| HTML & CSS | Struktur dan desain halaman |
 
-### Premium Partners
+## 4. Struktur Database
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+NusaTrip menggunakan empat tabel utama:
 
-## Contributing
+| Tabel | Fungsi |
+|---|---|
+| `buses` | Menyimpan informasi armada bus. |
+| `schedules` | Menyimpan rute, waktu perjalanan, harga, dan status jadwal. |
+| `seats` | Menyimpan daftar kursi setiap bus. |
+| `bookings` | Menyimpan informasi pemesanan dan data penumpang. |
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Relasi database dirancang menggunakan Eloquent ORM dan foreign key untuk menjaga keterkaitan data antar tabel.
 
-## Code of Conduct
+## 5. Validasi dan Keamanan
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Beberapa mekanisme validasi dan perlindungan data diterapkan pada proses pemesanan:
 
-## Security Vulnerabilities
+- Validasi input nama, email, nomor telepon, dan kursi.
+- Pemeriksaan status serta waktu keberangkatan jadwal.
+- Pemeriksaan kesesuaian kursi dengan bus yang dipilih.
+- Harga tiket ditentukan berdasarkan data jadwal di database, bukan input dari browser.
+- Penggunaan database transaction saat proses pemesanan.
+- Pencegahan pemesanan kursi ganda melalui pemeriksaan backend dan constraint database.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 6. Data Demo
 
-## License
+Aplikasi menyediakan data awal melalui database seeder agar dapat langsung diuji.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Data demo terdiri dari:
+
+- 3 armada bus dengan tipe Executive, Sleeper, dan Luxury.
+- 30 kursi untuk setiap bus.
+- 3 rute perjalanan.
+- 14 hari jadwal keberangkatan.
+- Total 42 jadwal perjalanan dan 90 kursi.
+
+Data demo dapat dibuat ulang menggunakan perintah database seeder.
+
+## 7. Instalasi dan Menjalankan Aplikasi
+
+### Persyaratan
+
+Pastikan perangkat telah memiliki:
+
+- PHP 8.1 atau lebih baru.
+- Composer.
+- MySQL.
+- Web browser.
+
+### Langkah Instalasi
+
+**1. Clone repository**
+
+```bash
+git clone https://github.com/HikmalRafi/NusaTrip.git
+```
+
+Masuk ke direktori proyek:
+
+```bash
+cd NusaTrip
+```
+
+**2. Install dependency**
+
+```bash
+composer install
+```
+
+**3. Konfigurasi environment**
+
+Salin file `.env.example` menjadi `.env`.
+
+```bash
+cp .env.example .env
+```
+
+Pada Windows, file tersebut juga dapat disalin secara manual melalui File Explorer.
+
+**4. Buat database**
+
+Buat database MySQL dengan nama:
+
+```text
+nusatrip_db
+```
+
+**5. Konfigurasi database**
+
+Sesuaikan konfigurasi database pada file `.env`:
+
+```env
+APP_NAME=NusaTrip
+APP_ENV=local
+APP_KEY=
+APP_DEBUG=true
+APP_URL=http://127.0.0.1:8000
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nusatrip_db
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Sesuaikan username dan password MySQL dengan konfigurasi perangkat masing-masing.
+
+**6. Generate application key**
+
+```bash
+php artisan key:generate
+```
+
+**7. Jalankan migration dan seeder**
+
+Untuk membuat struktur database sekaligus memasukkan data demo:
+
+```bash
+php artisan migrate:fresh --seed
+```
+
+**Catatan:** Perintah tersebut menghapus tabel dan seluruh data lama pada database yang sedang digunakan, kemudian membuat ulang database berdasarkan migration dan seeder.
+
+**8. Jalankan aplikasi**
+
+```bash
+php artisan serve
+```
+
+Buka aplikasi melalui browser:
+
+```text
+http://127.0.0.1:8000
+```
+
+## 8. Cara Menggunakan Aplikasi
+
+1. Buka halaman utama NusaTrip.
+2. Cari perjalanan berdasarkan kota asal, tujuan, dan tanggal.
+3. Pilih salah satu jadwal perjalanan.
+4. Periksa informasi bus dan detail perjalanan.
+5. Pilih kursi yang tersedia.
+6. Isi formulir informasi penumpang.
+7. Lakukan pemesanan.
+8. Sistem akan menampilkan halaman konfirmasi dan e-ticket yang berisi kode booking serta informasi perjalanan.
+
+## 9. Tujuan Pengembangan
+
+Pengembangan NusaTrip bertujuan untuk menerapkan konsep pengembangan aplikasi web berbasis Laravel, meliputi:
+
+- Penerapan arsitektur Model-View-Controller (MVC).
+- Pengelolaan database relasional.
+- Implementasi routing dan navigasi antarhalaman.
+- Validasi input pada sisi server.
+- Interaksi pengguna melalui JavaScript.
+- Pengelolaan proses pemesanan dan integritas data.
+
+---
+
+## Repository
+
+**GitHub:** https://github.com/HikmalRafi/NusaTrip
+
+**Project:** NusaTrip — Bus Ticket Reservation System
+
+**Framework:** Laravel 10
+
