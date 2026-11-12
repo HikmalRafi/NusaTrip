@@ -1,7 +1,7 @@
 # NusaTrip — Bus Ticket Reservation System
 
-Nama : **Fatih Hikmal Rafi**
-NPM  : **2610010357**
+# Nama : Fatih Hikmal Rafi
+# NPM   : 2610010357
 
 **NusaTrip** adalah aplikasi web pemesanan tiket bus antarkota yang dikembangkan menggunakan Laravel 10 dan MySQL. Aplikasi ini dirancang untuk memudahkan pengguna dalam mencari jadwal perjalanan, melihat informasi bus, memilih kursi, melakukan pemesanan, dan mendapatkan e-ticket secara digital.
 
