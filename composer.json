@@ -1,8 +1,8 @@
 {
-    "name": "laravel/laravel",
+    "name": "hikmalrafi/nusatrip",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "Bus ticket reservation system built with Laravel 10",
+    "keywords": ["nusatrip", "laravel", "bus-ticket-reservation"],
     "license": "MIT",
     "require": {
         "php": "^8.1",
